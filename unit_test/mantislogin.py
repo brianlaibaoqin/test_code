@@ -1,9 +1,9 @@
 # coding=utf-8
 
 from selenium import webdriver
-from test_code.base.base import BasePage
+from yoyotestui.base.base import BasePage
 
-path = r"C:\Users\brian\AppData\Roaming\Mozilla\Firefox\Profiles\zf3gw55k.default"
+path = r"C:\Users\baoqin.lai\AppData\Roaming\Mozilla\Firefox\Profiles\om8guvhh.default"
 fp = webdriver.FirefoxProfile(path)
 driver = webdriver.Firefox(fp)
 broswer = BasePage(driver)
@@ -21,3 +21,4 @@ v_username = broswer.get_text(loc_name)
 print("登录测试成功",v_username)
 assert v_username == "administrator ( brianlai )"
 driver.quit()
+

@@ -5,6 +5,7 @@ from selenium.webdriver.support.select import Select
 from selenium.common.exceptions import *   # 导入所有的异常类
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+
 import time
 import os
 
@@ -16,7 +17,7 @@ class BasePage(object):
         """
         启动浏览器参数化，
         """
-        # self.driver = webdriver.Firefox()
+        # self.driver = webdriver.Chrome()
         self.driver = driver
         self.timeout = 30  # 超时的时间设置
 
