@@ -1,36 +1,44 @@
 # coding=utf-8
-
+from yoyotestui.data.datainfo import *
 from selenium import webdriver
+from yoyotestui.page.login_public import Login
 from yoyotestui.base.base import BasePage
 import unittest
 
-
 class Mantis_login(unittest.TestCase):
-    """ 测试类  """
-    def setUp(self):
-        url  = "http://104.129.184.199/mantis/login_page.php"
-        path = r"C:\Users\baoqin.lai\AppData\Roaming\Mozilla\Firefox\Profiles\om8guvhh.default"
-        fp = webdriver.FirefoxProfile(path)
-        self.driver = webdriver.Firefox(fp )
-        self.broswer = BasePage(self.driver)
-        self.broswer.open(url )
+        """ 测试类  """
+        def setUp(self):
+            fp = webdriver.FirefoxProfile(path)
+            self.driver = webdriver.Firefox(fp)
+            self.Login_test1 = Login(self.driver)
+            self.Login_test1.login_step()
+            self.Login_test1.V_login()
+        def tearDown(self):
+            #self.Login_test1.login_out()
+            pass
+        def test_case1(self):
+            broswer = BasePage(self.driver)
+            loc = ("xpath","//*[@id='dropdown_projects_menu']/a")
+            name =  broswer.get_text(loc)
+            print(name)
+            if  name != "拉耳机":
+                broswer.click(loc)
+                loc_Targe = ("link text","拉耳机")
+                broswer.click(loc_Targe)
+            # 点击提交问题
+            loc_commit = ("css selector",".menu-icon.fa.fa-edit")
+            broswer.click(loc_commit)
+            #
+            loc_
 
-    def tearDown(self):
-        self.driver.quit()
 
-    def test_case1(self):
-        loc = ("css selector","#username")
-        self.broswer.send_keys(loc ,"administrator")
-        loc1 = ("xpath","//input[@type='submit']")
-        self.broswer.click(loc1)
-        loc2 = ("css selector","#password")
-        self.broswer.send_keys(loc2,"a124689a")
-        self.broswer.click(loc1)
-        loc_name = ("css selector",".breadcrumb>li>a")
-        v_username = self.broswer.get_text(loc_name)
-        print("登录测试成功",v_username)
-        self.assertIn (v_username ,"administrator ( brianlai )")
+
+
+
+
+
 
 
 if __name__ == "__main__":
+
     unittest.main()
