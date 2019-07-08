@@ -18,4 +18,5 @@ strSql = 'DELETE from`onethink_ucenter_member` WHERE `username` = %r ' % usernam
 # by_tag_name = "tag name"
 # by_class_name = "class name"
 # by_css_selector = "css selector"
+# print("服务器提交")
 
